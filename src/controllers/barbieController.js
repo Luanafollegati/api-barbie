@@ -42,7 +42,9 @@ const createBarbie = (req, res) => {
 
   res.status(201).json({
     success: true,
+    message: "Barbie criada com sucesso!",
     barbie: novaBarbie,
+    
   });
 };
 
