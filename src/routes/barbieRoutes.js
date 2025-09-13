@@ -8,4 +8,4 @@ router.get("/:id", getBarbieById);
 router.post("/", createBarbie);
 router.delete("/:id", deleteBarbie);
 
-'export default router;'
+export default router;

@@ -1,22 +1,22 @@
 import dados from "./../models/dados.js";
 const { barbies } = dados;
 
-const getAllBarbies = (req, req) => {
+const getAllBarbies = (req, res) => {
   const resultado = barbies;
 
-  resultado.status(200).json({
+  res.status(200).json({
     total: resultado.length,
-    bruxos: resultado,
+    barbies: resultado,
   });
 };
 
 const getBarbieById = (req, res) => {
   let id = parseInt(req.params.id);
 
-  const barbie = barbie.find((b) => b.id === id);
+  const barbie = barbies.find((b) => b.id === id);
 
   res.status(200).json({
-    sucess: true,
+    success: true,
     barbie: barbie,
   });
 };
@@ -26,8 +26,8 @@ const createBarbie = (req, res) => {
 
   if (!nome || !profissao) {
     return res.status(400).json({
-      sucess: false,
-      message: "Nome e profisssão da barbie são obrigatórios!!",
+      success: false,
+      message: "Nome e profissão da barbie são obrigatórios!!",
     });
   }
 
@@ -41,7 +41,7 @@ const createBarbie = (req, res) => {
   barbies.push(novaBarbie);
 
   res.status(201).json({
-    sucess: true,
+    success: true,
     barbie: novaBarbie,
   });
 };
@@ -54,7 +54,7 @@ const deleteBarbie = (req, res) => {
 
   if (!barbieParaRemover) {
     return res.status(404).json({
-      sucess: false,
+      success: false,
       message: `Barbie com id ${id} não encontrada!`,
     });
   }
@@ -64,9 +64,9 @@ const deleteBarbie = (req, res) => {
   barbies.splice(0, barbies.length, ...barbiesFiltradas);
 
   res.status(200).json({
-    sucess: true,
+    success: true,
     message: `Barbie removida com sucesso!`,
-    brarbieParaRemover: barbieParaRemover,
+    barbieParaRemover: barbieParaRemover,
   });
 };
 
