@@ -17,7 +17,7 @@ const getBarbieById = (req, res) => {
 
   res.status(200).json({
     success: true,
-    barbie: barbie,
+    menssage: "ID da barbie não encontrado!"
   });
 };
 
