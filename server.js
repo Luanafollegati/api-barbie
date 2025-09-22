@@ -1,27 +1,19 @@
-// Importar pacotes/bibliotecas
 import express from "express";
 import dotenv from "dotenv";
-import barbieRoutes from "./src/routes/barbieRoutes.js";
+import cartasRoutes from "./src/routes/cartasRoutes.js";
 
-// Criar aplicação com Express e configurar para aceitar JSON
 const app = express();
 app.use(express.json());
 
-// Carregar variáveis de ambiente e definir constante para porta do servidor
 dotenv.config();
-const serverPort = process.env.PORT || 3001;
+const serverPort = process.env.PORT || 4005;
 
-// Rota principal GET para "/"
-app.get("/", (req, res) => {
-    res.send("🚀 Servidor funcionando...");
+app.get("/", (req,res)=> {
+    res.send("servidor funcionando")
 });
 
+app.use("/cartas", cartasRoutes);
 
-// Aqui vão todas suas Rotas
-app.use("/barbies", barbieRoutes);
-
-
-// Iniciar servidor escutando na porta definida
 app.listen(serverPort, () => {
-    console.log(`🚀 Servidor rodando em http://localhost:${serverPort} 🚀`);
+    console.log(`servidor rodando em http://localhost:${serverPort}`);
 });
